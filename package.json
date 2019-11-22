@@ -1,0 +1,25 @@
+{
+  "name": "go-timisoara-website",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "clsx": "^1.0.4",
+    "next": "^9.1.4",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^12.11.7",
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
+    "typescript": "^3.7.2"
+  }
+}
