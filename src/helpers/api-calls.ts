@@ -2,10 +2,11 @@ import Tag from "../types/Tag";
 import Article, {IMAGE, IMAGE_GROUP, PARAGRAPH, TITLE} from "../types/Article";
 
 let tags = [
-    {tagId: 1, tagName: "Food"},
-    {tagId: 2, tagName: "Movies"},
-    {tagId: 3, tagName: "Places"},
-    {tagId: 4, tagName: "Night Life"}
+    {tagId: 1, tagName: "stiri"},
+    {tagId: 2, tagName: "teatru"},
+    {tagId: 3, tagName: "expozitii"},
+    {tagId: 4, tagName: "concerte"},
+    {tagId: 5, tagName: "diverse"}
 ];
 
 export function getAllTags(): Promise<Array<Tag>> {
