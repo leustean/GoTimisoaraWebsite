@@ -1,22 +1,19 @@
-import React from 'react';
-import Header from "../src/components/Header";
-import Tag from "../src/types/Tag";
-import {getAllTags} from "../src/helpers/api-calls";
+import ArticlesPage, {ArticlesPageProps} from "../src/components/ArticlesPage";
+import {getAllTags, getArticlesAtPage} from "../src/helpers/api-calls";
+import React from "react";
 
-interface IndexPageProps {
-    tagList: Array<Tag>
-}
-
-const Index = ({tagList}: IndexPageProps) => {
-    return (
-        <Header tagList={tagList}/>
-    );
+const Page = (props: ArticlesPageProps) => {
+    return <ArticlesPage {...props}/>
 };
 
-Index.getInitialProps = async () => {
+Page.getInitialProps = async () => {
     return {
-        tagList: await getAllTags()
+        tagList: await getAllTags(),
+        articleResponse: await getArticlesAtPage(0),
+        pageSorting: "cele-mai-noi",
+        activeTag: null
     };
 };
 
-export default Index
+// noinspection JSUnusedGlobalSymbols
+export default Page

@@ -8,7 +8,7 @@ export default interface Article {
     tag: Tag | null,
     createdAt: string,
     updatedAt: string,
-    contents: Array<Title | Paragraph | Image | ImageGroup>,
+    contents: Array<ArticleContent>,
     isVisible: boolean
 }
 
@@ -45,3 +45,5 @@ export interface ImageGroup {
     imageGroupTitle: null | string
     images: Array<Image>,
 }
+
+export type ArticleContent = Title | Paragraph | Image | ImageGroup
