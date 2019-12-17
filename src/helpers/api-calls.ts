@@ -1,5 +1,11 @@
 import Tag from "../types/Tag";
 import Article, {IMAGE, IMAGE_GROUP, PARAGRAPH, TITLE} from "../types/Article";
+import fetch from 'isomorphic-unfetch'
+
+const apiUrl = process.env.API_URL;
+
+
+let getAllTagsFunction;
 
 let tags = [
     {tagId: 1, tagName: "stiri"},
@@ -9,10 +15,18 @@ let tags = [
     {tagId: 5, tagName: "diverse"}
 ];
 
-export function getAllTags(): Promise<Array<Tag>> {
-    return new Promise(resolve => setTimeout(() => {
-        resolve(tags)
-    }, 100))
+
+if (apiUrl == "") {
+    getAllTagsFunction = (): Promise<Array<Tag>> => {
+        return new Promise(resolve => setTimeout(() => {
+            resolve(tags)
+        }, 100))
+    }
+} else {
+    getAllTagsFunction = async (): Promise<Array<Tag>> => {
+        const response = await fetch(apiUrl + "tag");
+        return response.json();
+    }
 }
 
 export interface ArticleResponse {
@@ -89,3 +103,5 @@ export function getArticleById(articleId: number): Promise<Article | null> {
         resolve(foundArticle ? foundArticle : null);
     }, 100))
 }
+
+export const getAllTags = getAllTagsFunction;
