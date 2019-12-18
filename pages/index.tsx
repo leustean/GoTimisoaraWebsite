@@ -9,7 +9,7 @@ const Page = (props: ArticlesPageProps) => {
 Page.getInitialProps = async () => {
     return {
         tagList: await getAllTags(),
-        articleResponse: await getArticlesAtPage(0),
+        articleResponse: await getArticlesAtPage(1),
         pageSorting: "cele-mai-noi",
         activeTag: null
     };

@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Article, {Image, IMAGE, Paragraph, PARAGRAPH} from "../types/Article";
 import {makeStyles, Theme, Typography} from "@material-ui/core";
-import Link from "./Link";
+import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -64,9 +64,10 @@ const ArticleCard = ({article}: ArticleCardProps) => {
     const classes = useStyles();
     const articleImage = getArticleCoverImage(article);
     const articleParagraph = getArticleTextPreview(article);
+    const date = new Date(Date.parse(article.updatedAt));
 
     // noinspection HtmlUnknownTarget
-    return <Link href="/article/[articleId]" as={`/article/${article.articleId}`} className={classes.text}>
+    return <Link href={`/article/${article.articleId}`} className={classes.text}>
         <Paper className={classes.paper} elevation={5}>
             {articleImage !== null && <img
                 src={articleImage.imageUrl}
@@ -86,7 +87,7 @@ const ArticleCard = ({article}: ArticleCardProps) => {
                 </Grid>}
                 <Grid item>
                     <Typography variant={"body2"} align={"center"}>
-                        {article.updatedAt}
+                        {date.getDay()}/{date.getMonth()}/{date.getFullYear()}
                     </Typography>
                 </Grid>
             </Grid>

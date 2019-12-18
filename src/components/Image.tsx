@@ -32,9 +32,10 @@ const Image = ({image}: ImageProps) => {
 
     return <a href={image.imageLink} className={classes.root}>
         <img src={image.imageUrl} className={classes.image} alt={image.imageCaption}/>
-        <Typography className={classes.text}>
+        {image.imageCaption.length != 0 && <Typography className={classes.text}>
             {image.imageCaption}
-        </Typography>
+        </Typography>}
+
     </a>
 };
 

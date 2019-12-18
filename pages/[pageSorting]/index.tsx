@@ -15,7 +15,7 @@ Page.getInitialProps = async ({query}: NextRouter) => {
 
     return {
         tagList: await getAllTags(),
-        articleResponse: await getArticlesAtPage(0),
+        articleResponse: await getArticlesAtPage(1, 0, pageSorting),
         pageSorting: pageSorting,
         activeTag: null
     };

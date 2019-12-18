@@ -3,7 +3,7 @@ import Tag from "../types/Tag";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {makeStyles, Theme} from "@material-ui/core";
-import Link from "./Link";
+import Link from '@material-ui/core/Link';
 import clsx from "clsx";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -51,8 +51,7 @@ const Header = ({tagList, activeTag, pageSorting}: HeaderProps) => {
             <Grid item key={tag.tagId}>
                 <Link
                     className={clsx(classes.tag, tag.tagName == activeTag && classes.active)}
-                    href={"/[pageSorting]/[tag]"}
-                    as={`/${pageSorting}/${tag.tagName}`}
+                    href={`/${pageSorting}/${tag.tagName}`}
                 >
                     {tag.tagName}
                 </Link>

@@ -12,10 +12,16 @@ Page.getInitialProps = async ({query}: NextRouter) => {
     if (Array.isArray(tag) || (Array.isArray(pageSorting))) {
         throw new Error()
     }
-
+    const tags = await getAllTags();
+    let tagId = 0;
+    for(const tagObject of tags){
+        if(tagObject.tagName == tag){
+            tagId = tagObject.tagId
+        }
+    }
     return {
-        tagList: await getAllTags(),
-        articleResponse: await getArticlesAtPage(0, tag),
+        tagList: tags,
+        articleResponse: await getArticlesAtPage(1, tagId, pageSorting),
         pageSorting: pageSorting,
         activeTag: tag
     };

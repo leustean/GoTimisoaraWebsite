@@ -1,7 +1,7 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Link from "./Link";
+import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 import clsx from "clsx";
 import {Theme} from "@material-ui/core";
@@ -76,13 +76,6 @@ const createLink = (slug: string, activeTag: string | null) => {
     return `/${slug}/${activeTag}`
 };
 
-const createHref = (activeTag: string | null) => {
-    if (activeTag == null) {
-        return "/[pageSorting]"
-    }
-    return "/[pageSorting]/[tag]"
-};
-
 
 const Sorting = ({pageSorting, activeTag}: SortingProps) => {
     const classes = useStyles();
@@ -98,8 +91,7 @@ const Sorting = ({pageSorting, activeTag}: SortingProps) => {
                     className={clsx(classes.tag, pageSlugIndex == index && classes.active)}
                 >
                     <Link
-                        href={createHref(activeTag)}
-                        as={createLink(sorting.slug, activeTag)}
+                        href={createLink(sorting.slug, activeTag)}
                         className={classes.link}
                     >
                         <Grid

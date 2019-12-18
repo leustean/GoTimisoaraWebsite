@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         paddingRight: theme.spacing(2)
     },
     contentItem: {
+        width: "100%",
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2)
     },
@@ -50,6 +51,7 @@ const renderContent = (content: ArticleContent) => {
 
 const ArticlePage = ({article, tagList, pageSorting}: ArticlePageProps) => {
     const classes = useStyles();
+    const date = new Date(Date.parse(article.updatedAt));
 
     return (
         <Fragment>
@@ -61,7 +63,7 @@ const ArticlePage = ({article, tagList, pageSorting}: ArticlePageProps) => {
                             {article.title}
                         </Typography>
                         <Typography variant={"subtitle1"} display={"block"}>
-                            {article.author.fullName} - {article.updatedAt}
+                            {article.author.fullName} - {date.getDay()}/{date.getMonth()}/{date.getFullYear()}
                         </Typography>
                     </Grid>
                     {article.contents.map((content: ArticleContent, index: number) =>
